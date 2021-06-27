@@ -8,8 +8,6 @@
       height: 64px;
       margin: 0 auto;
 
-      // background: #0f0;
-
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -25,6 +23,10 @@
       > div {
         display: flex;
         gap: 10px;
+
+        @media(min-width: 720px) {
+          gap: 18px;
+        }
       }
     }
   }
@@ -33,8 +35,6 @@
     width: 90%;
     max-width: 800px;
     margin: 0 auto;
-
-    // background: #0f0;
 
     .room-title {
       margin: 32px 0 24px;
