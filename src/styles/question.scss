@@ -1,10 +1,9 @@
 .question {
-  height: 142px;
+  height: 150px;
   background: #fefefe;
-  // background: #00f;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(95, 58, 58, 0.12);
-  padding: 24px;
+  padding: 25px;
 
   & + .question {
     margin-top: 12px;
