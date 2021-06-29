@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 
 import logoImg from '../assets/images/logo.svg';
 
-import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 import { useAuth } from '../hooks/useAuth';
@@ -70,30 +69,33 @@ export function Room() {
       </header>
 
       <main>
-        <div className="room-title">
-          <h1>Sala {title}</h1>
-         { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
-        </div>
-
-        <form onSubmit={handleSendQuestion}>
-          <textarea 
-            placeholder="O que você quer perguntar?"
-            onChange={event => setNewQuestion(event.target.value)}
-            value={newQuestion}
-          />
-
-          <div className="form-footer">
-            { user ? (
-              <div className="user-info">
-                <img src={user.avatar} alt={user.name} />
-                <span>{user.name}</span>
-              </div>
-            ) : (
-              <span>Para enviar uma pergunta, <button>faca seu login</button>.</span>
-            ) }
-            <Button type="submit" disabled={!user}>Enviar perguntar</Button>
+        <aside>
+          <div className="room-title">
+            <h1>Sala {title}</h1>
+          { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
           </div>
-        </form>
+
+          <form onSubmit={handleSendQuestion}>
+            <textarea 
+              placeholder="O que você quer perguntar?"
+              maxLength={90}
+              onChange={event => setNewQuestion(event.target.value)}
+              value={newQuestion}
+            />
+
+            <div className="form-footer">
+              { user ? (
+                <div className="user-info">
+                  <img src={user.avatar} alt={user.name} />
+                  <span>{user.name}</span>
+                </div>
+              ) : (
+                <span>Para enviar uma pergunta, <button>faca seu login</button>.</span>
+              ) }
+              <button className="form-button" type="submit" disabled={!user}>Send</button>
+            </div>
+          </form>
+        </aside>
 
         <div className="question-list">
           {questions.map(question => {
