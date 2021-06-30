@@ -1,15 +1,15 @@
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import logoImg from '../assets/images/logo.svg';
+import logoImg from '../../assets/images/logo.svg';
 
-import { RoomCode } from '../components/RoomCode';
-import { Question } from '../components/Question';
-import { useAuth } from '../hooks/useAuth';
-import { database } from '../services/firebase';
-import { useRoom } from '../hooks/useRoom';
+import { RoomCode } from '../../components/RoomCode/index';
+import { Question } from '../../components/Question/index';
+import { useAuth } from '../../hooks/useAuth';
+import { database } from '../../services/firebase';
+import { useRoom } from '../../hooks/useRoom';
 
-import "../styles/room.scss"
+import "../../styles/room.scss"
 
 type RoomParams = {
   id: string;
@@ -71,13 +71,13 @@ export function Room() {
       <main>
         <aside>
           <div className="room-title">
-            <h1>Sala {title}</h1>
-          { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
+            <h1>{title}</h1>
+          { questions.length > 0 && <span>{questions.length} question(s)</span> }
           </div>
 
           <form onSubmit={handleSendQuestion}>
             <textarea 
-              placeholder="O que você quer perguntar?"
+              placeholder="What do you want to ask?"
               maxLength={90}
               onChange={event => setNewQuestion(event.target.value)}
               value={newQuestion}

@@ -1,19 +1,19 @@
 import { useHistory, useParams } from 'react-router-dom';
 
-import logoImg from '../assets/images/logo.svg';
-import deleteImg from '../assets/images/delete.svg';
-import checkImg from '../assets/images/check.svg';
-import answerImg from '../assets/images/answer.svg';
+import logoImg from '../../assets/images/logo.svg';
+import deleteImg from '../../assets/images/delete.svg';
+import checkImg from '../../assets/images/check.svg';
+import answerImg from '../../assets/images/answer.svg';
 
-import { Button } from '../components/Button';
-import { RoomCode } from '../components/RoomCode';
-import { Question } from '../components/Question';
+import { Button } from '../../components/Button/index';
+import { RoomCode } from '../../components/RoomCode/index';
+import { Question } from '../../components/Question/index';
 
-import { useRoom } from '../hooks/useRoom';
+import { useRoom } from '../../hooks/useRoom';
 
-import { database } from '../services/firebase';
+import { database } from '../../services/firebase';
 
-import "../styles/room.scss"
+import "../../styles/room.scss"
 
 type RoomParams = {
   id: string;
@@ -35,7 +35,7 @@ export function AdminRoom() {
   }
 
   async function handleDeleteQuestion(questionId: string) {
-    if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
+    if (window.confirm('Are you sure you want to delete this question?')) {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
     }
   }
@@ -59,15 +59,15 @@ export function AdminRoom() {
           <img src={logoImg} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
+            <Button isOutlined onClick={handleEndRoom}>Close room</Button>
           </div>
         </div>
       </header>
 
       <main>
         <div className="room-title">
-          <h1>Sala {title}</h1>
-         { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
+          <h1>{title}</h1>
+         { questions.length > 0 && <span>{questions.length} question(s)</span> }
         </div>
 
         <div className="question-list">
@@ -86,14 +86,14 @@ export function AdminRoom() {
                       type="button"
                       onClick={() => handleCheckQuestionAsAnswered(question.id)}
                       >
-                      <img src={checkImg} alt="Marcar pergunta como respondida" />
+                      <img src={checkImg} alt="" />
                     </button>
 
                     <button
                       type="button"
                       onClick={() => handleHighlightQuestion(question.id)}
                     >
-                      <img src={answerImg} alt="Dar destaque á pergunta" />
+                      <img src={answerImg} alt="Mark question as answered." />
                     </button>
                   </>
                 )}
@@ -102,7 +102,7 @@ export function AdminRoom() {
                   type="button"
                   onClick={() => handleDeleteQuestion(question.id)}
                 >
-                  <img src={deleteImg} alt="Remover pergunta" />
+                  <img src={deleteImg} alt="Delete question." />
                 </button>
               </Question>
             );
