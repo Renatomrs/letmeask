@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
 
-    padding: 50px 50px;
+    padding: 30px 30px;
 
     img {
       max-width: 200px;
@@ -37,7 +37,7 @@
   main {
     flex: 7;
 
-    padding: 50px;
+    padding: 30px;
 
     display: flex;
     justify-content: center;
@@ -143,6 +143,16 @@
       height: 1px;
       background: #a8a8b3;
       margin-left: 16px;
+    }
+  }
+
+  @media (min-width: 360px) {
+    aside {
+      padding: 50px 50px;
+    }
+    
+    main {
+      padding: 50px;
     }
   }
 
