@@ -2,11 +2,11 @@
   height: 170px;
   background: #fefefe;
   border-radius: 9px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.14);
   padding: 23px;
 
   & + .question {
-    margin-top: 14px;
+    margin-top: 18px;
   }
 
   &.highlighted {
