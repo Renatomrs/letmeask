@@ -85,4 +85,12 @@
       }
     }
   }
+
+  @media (min-width: 700px) {
+    height: 140px;
+
+    p {
+      height: 50px;
+    }
+  }
 }
